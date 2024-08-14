@@ -66,6 +66,43 @@ func (c *ClickHouseConnector) CleanupQRepFlow(ctx context.Context, config *proto
 	return c.dropStage(ctx, config.StagingPath, config.FlowJobName)
 }
 
+func (c *ClickHouseConnector) AvroImport(ctx context.Context, config *protos.FlowConnectionConfigs) error {
+	// TODO s3 creds
+	for _, mapping := range config.TableMappings {
+		uri := fmt.Sprintf("%s/%s/*.avro", config.CdcStagingPath, mapping.SourceTableIdentifier)
+		if err := c.SyncFromAvroS3(ctx, utils.AWSCredentials{}, uri, mapping.DestinationTableIdentifier); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func (c *ClickHouseConnector) SyncFromAvroS3(
+	ctx context.Context,
+	creds utils.AWSCredentials,
+	avroFileUrl string,
+	destinationTableIdentifier string,
+) error {
+	// TODO selectorStr
+	var selectorStr string
+
+	sessionTokenPart := ""
+	if creds.AWS.SessionToken != "" {
+		sessionTokenPart = fmt.Sprintf(", '%s'", creds.AWS.SessionToken)
+	}
+	query := fmt.Sprintf("INSERT INTO %s(%s) SELECT %s FROM s3('%s','%s','%s'%s, 'Avro')",
+		destinationTableIdentifier, selectorStr, selectorStr, avroFileUrl,
+		creds.AWS.AccessKeyID, creds.AWS.SecretAccessKey, sessionTokenPart)
+
+	err := c.database.Exec(ctx, query)
+	if err != nil {
+		c.logger.Error("Failed to insert into select for Clickhouse: ", err)
+		return err
+	}
+
+	return nil
+}
+
 // dropStage drops the stage for the given job.
 func (c *ClickHouseConnector) dropStage(ctx context.Context, stagingPath string, job string) error {
 	// if s3 we need to delete the contents of the bucket
