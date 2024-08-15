@@ -70,7 +70,7 @@ func (c *ClickHouseConnector) AvroImport(ctx context.Context, config *protos.Flo
 	// TODO s3 creds
 	for _, mapping := range config.TableMappings {
 		uri := fmt.Sprintf("%s/%s/*.avro", config.CdcStagingPath, mapping.SourceTableIdentifier)
-		if err := c.SyncFromAvroS3(ctx, utils.AWSCredentials{}, uri, mapping.DestinationTableIdentifier); err != nil {
+		if err := c.SyncFromAvroS3(ctx, aws.Credentials{}, uri, mapping.DestinationTableIdentifier); err != nil {
 			return err
 		}
 	}
@@ -79,20 +79,19 @@ func (c *ClickHouseConnector) AvroImport(ctx context.Context, config *protos.Flo
 
 func (c *ClickHouseConnector) SyncFromAvroS3(
 	ctx context.Context,
-	creds utils.AWSCredentials,
+	creds aws.Credentials,
 	avroFileUrl string,
 	destinationTableIdentifier string,
 ) error {
-	// TODO selectorStr
-	var selectorStr string
-
 	sessionTokenPart := ""
-	if creds.AWS.SessionToken != "" {
-		sessionTokenPart = fmt.Sprintf(", '%s'", creds.AWS.SessionToken)
+	if creds.SessionToken != "" {
+		sessionTokenPart = fmt.Sprintf(", '%s'", creds.SessionToken)
 	}
-	query := fmt.Sprintf("INSERT INTO %s(%s) SELECT %s FROM s3('%s','%s','%s'%s, 'Avro')",
-		destinationTableIdentifier, selectorStr, selectorStr, avroFileUrl,
-		creds.AWS.AccessKeyID, creds.AWS.SecretAccessKey, sessionTokenPart)
+
+	// CH supports `(* except (b))` which can be used in future to support column exclusion
+	query := fmt.Sprintf("INSERT INTO %s (*) SELECT * FROM s3('%s','%s','%s'%s, 'Avro')",
+		destinationTableIdentifier, avroFileUrl,
+		creds.AccessKeyID, creds.SecretAccessKey, sessionTokenPart)
 
 	err := c.database.Exec(ctx, query)
 	if err != nil {

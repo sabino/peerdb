@@ -965,9 +965,9 @@ func (c *BigQueryConnector) AvroExport(ctx context.Context, config *protos.FlowC
 		uri := fmt.Sprintf("%s/%s/*.avro", config.CdcStagingPath, mapping.SourceTableIdentifier)
 		gcsRef := bigquery.NewGCSReference(uri)
 		gcsRef.DestinationFormat = bigquery.Avro
+		gcsRef.AvroOptions = &bigquery.AvroOptions{UseAvroLogicalTypes: true}
 		gcsRef.Compression = bigquery.Snappy
 
-		// TODO s3 creds
 		extractor := c.client.DatasetInProject(c.projectID, c.datasetID).Table(mapping.SourceTableIdentifier).ExtractorTo(gcsRef)
 		job, err := extractor.Run(ctx)
 		if err != nil {
@@ -976,7 +976,6 @@ func (c *BigQueryConnector) AvroExport(ctx context.Context, config *protos.FlowC
 		jobs = append(jobs, job)
 	}
 	for _, job := range jobs {
-		// TODO use Read to get output paths?
 		if status, err := job.Wait(ctx); err != nil {
 			return err
 		} else if err := status.Err(); err != nil {
