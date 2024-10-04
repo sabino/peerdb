@@ -1239,6 +1239,11 @@ func (c *PostgresConnector) AddTablesToPublication(ctx context.Context, req *pro
 		return nil
 	}
 
+	if req.PublicationName != "" {
+		c.logger.Info("custom publication " + req.PublicationName + " detected, skipping adding table to publication")
+		return nil
+	}
+
 	additionalSrcTables := make([]string, 0, len(req.AdditionalTables))
 	for _, additionalTableMapping := range req.AdditionalTables {
 		additionalSrcTables = append(additionalSrcTables, additionalTableMapping.SourceTableIdentifier)
@@ -1250,20 +1255,17 @@ func (c *PostgresConnector) AddTablesToPublication(ctx context.Context, req *pro
 			return err
 		}
 
-		if req.PublicationName == "" {
-			_, err = c.execWithLogging(ctx, fmt.Sprintf("ALTER PUBLICATION %s ADD TABLE %s",
-				utils.QuoteIdentifier(c.getDefaultPublicationName(req.FlowJobName)),
-				schemaTable.String()))
-			// don't error out if table is already added to our publication
-			if err != nil && !shared.IsSQLStateError(err, pgerrcode.DuplicateObject) {
-				return fmt.Errorf("failed to alter publication: %w", err)
-			}
-			c.logger.Info("added table to publication",
-				slog.String("publication", c.getDefaultPublicationName(req.FlowJobName)),
-				slog.String("table", additionalSrcTable))
-		} else {
-			c.logger.Info("custom publication " + req.PublicationName + " detected, skipping adding table to publication")
+		_, err = c.execWithLogging(ctx, fmt.Sprintf("ALTER PUBLICATION %s ADD TABLE %s",
+			utils.QuoteIdentifier(c.getDefaultPublicationName(req.FlowJobName)),
+			schemaTable.String()))
+		// don't error out if table is already added to our publication
+		if err != nil && !shared.IsSQLStateError(err, pgerrcode.DuplicateObject) {
+			return fmt.Errorf("failed to alter publication: %w", err)
 		}
+		c.logger.Info("added table to publication",
+			slog.String("publication", c.getDefaultPublicationName(req.FlowJobName)),
+			slog.String("table", additionalSrcTable))
+
 	}
 
 	return nil
