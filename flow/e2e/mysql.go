@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/PeerDB-io/peerdb/flow/connectors"
-	"github.com/PeerDB-io/peerdb/flow/connectors/mysql"
+	connmysql "github.com/PeerDB-io/peerdb/flow/connectors/mysql"
 	"github.com/PeerDB-io/peerdb/flow/connectors/utils"
 	"github.com/PeerDB-io/peerdb/flow/generated/protos"
 	"github.com/PeerDB-io/peerdb/flow/model"
@@ -185,4 +185,8 @@ func (s *MySqlSource) GetRows(ctx context.Context, suffix string, table string, 
 	}
 
 	return batch, nil
+}
+
+func (s *MySqlSource) Query(ctx context.Context, query string) (*model.QRecordBatch, error) {
+	panic("Query not implemented for MySqlSource")
 }
