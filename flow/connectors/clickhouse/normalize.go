@@ -313,7 +313,7 @@ func (c *ClickHouseConnector) NormalizeRecords(
 					slog.String("query", query.Query),
 					slog.String("table", query.TableName))
 
-				if err := chConn.Exec(errCtx, query.Query); err != nil {
+				if err := c.execWithConnection(ctx, chConn, query); err != nil {
 					return fmt.Errorf("error while inserting into normalized table: %w", err)
 				}
 
