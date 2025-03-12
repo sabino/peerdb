@@ -69,7 +69,7 @@ func (c *ClickHouseConnector) avroSyncMethod(flowJobName string, env map[string]
 	qrepConfig := &protos.QRepConfig{
 		StagingPath:                c.credsProvider.BucketPath,
 		FlowJobName:                flowJobName,
-		DestinationTableIdentifier: c.getRawTableName(flowJobName),
+		DestinationTableIdentifier: c.GetRawTableName(flowJobName),
 		Env:                        env,
 	}
 	return NewClickHouseAvroSyncMethod(qrepConfig, c)

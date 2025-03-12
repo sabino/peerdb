@@ -250,7 +250,7 @@ func (c *ClickHouseConnector) NormalizeRecords(
 		}, nil
 	}
 
-	if err := c.copyAvroStagesToDestination(ctx, req.FlowJobName, req.SyncBatchID); err != nil {
+	if err := c.copyAvroStagesToDestination(ctx, req.FlowJobName, req.SyncBatchID, req.Env); err != nil {
 		return model.NormalizeResponse{}, fmt.Errorf("failed to copy avro stages to destination: %w", err)
 	}
 
@@ -313,7 +313,7 @@ func (c *ClickHouseConnector) NormalizeRecords(
 					slog.String("query", query.Query),
 					slog.String("table", query.TableName))
 
-				if err := c.execWithConnection(ctx, chConn, query); err != nil {
+				if err := c.execWithConnection(ctx, chConn, query.Query); err != nil {
 					return fmt.Errorf("error while inserting into normalized table: %w", err)
 				}
 
@@ -613,7 +613,7 @@ func (c *ClickHouseConnector) copyAvroStageToDestination(
 }
 
 func (c *ClickHouseConnector) copyAvroStagesToDestination(
-	ctx context.Context, flowJobName string, syncBatchID int64, env map[string]string
+	ctx context.Context, flowJobName string, syncBatchID int64, env map[string]string,
 ) error {
 	lastSyncedBatchIdInRawTable, err := c.GetLastBatchIDInRawTable(ctx, flowJobName)
 	if err != nil {
