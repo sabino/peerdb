@@ -147,6 +147,11 @@ func (s *ClickHouseAvroSyncMethod) SyncQRepRecords(
 	selectedColumnNames := make([]string, 0, len(schema.Fields))
 	insertedColumnNames := make([]string, 0, len(schema.Fields))
 	for _, colName := range schema.GetColumnNames() {
+		for _, excludedColumn := range config.Exclude {
+			if colName == excludedColumn {
+				continue
+			}
+		}
 		selectedColumnNames = append(selectedColumnNames, "`"+columnNameAvroFieldMap[colName]+"`")
 		insertedColumnNames = append(insertedColumnNames, "`"+colName+"`")
 	}
