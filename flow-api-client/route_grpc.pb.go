@@ -19,48 +19,48 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	FlowService_ValidatePeer_FullMethodName            = "/peerdb_route.FlowService/ValidatePeer"
-	FlowService_ValidateCDCMirror_FullMethodName       = "/peerdb_route.FlowService/ValidateCDCMirror"
-	FlowService_CreatePeer_FullMethodName              = "/peerdb_route.FlowService/CreatePeer"
-	FlowService_DropPeer_FullMethodName                = "/peerdb_route.FlowService/DropPeer"
-	FlowService_CreateCDCFlow_FullMethodName           = "/peerdb_route.FlowService/CreateCDCFlow"
-	FlowService_CreateQRepFlow_FullMethodName          = "/peerdb_route.FlowService/CreateQRepFlow"
-	FlowService_CustomSyncFlow_FullMethodName          = "/peerdb_route.FlowService/CustomSyncFlow"
-	FlowService_GetAlertConfigs_FullMethodName         = "/peerdb_route.FlowService/GetAlertConfigs"
-	FlowService_PostAlertConfig_FullMethodName         = "/peerdb_route.FlowService/PostAlertConfig"
-	FlowService_DeleteAlertConfig_FullMethodName       = "/peerdb_route.FlowService/DeleteAlertConfig"
-	FlowService_GetDynamicSettings_FullMethodName      = "/peerdb_route.FlowService/GetDynamicSettings"
-	FlowService_PostDynamicSetting_FullMethodName      = "/peerdb_route.FlowService/PostDynamicSetting"
-	FlowService_GetScripts_FullMethodName              = "/peerdb_route.FlowService/GetScripts"
-	FlowService_PostScript_FullMethodName              = "/peerdb_route.FlowService/PostScript"
-	FlowService_DeleteScript_FullMethodName            = "/peerdb_route.FlowService/DeleteScript"
-	FlowService_CDCTableTotalCounts_FullMethodName     = "/peerdb_route.FlowService/CDCTableTotalCounts"
-	FlowService_GetSchemas_FullMethodName              = "/peerdb_route.FlowService/GetSchemas"
-	FlowService_GetPublications_FullMethodName         = "/peerdb_route.FlowService/GetPublications"
-	FlowService_GetTablesInSchema_FullMethodName       = "/peerdb_route.FlowService/GetTablesInSchema"
-	FlowService_GetAllTables_FullMethodName            = "/peerdb_route.FlowService/GetAllTables"
-	FlowService_GetColumns_FullMethodName              = "/peerdb_route.FlowService/GetColumns"
-	FlowService_GetSlotInfo_FullMethodName             = "/peerdb_route.FlowService/GetSlotInfo"
-	FlowService_GetSlotLagHistory_FullMethodName       = "/peerdb_route.FlowService/GetSlotLagHistory"
-	FlowService_GetStatInfo_FullMethodName             = "/peerdb_route.FlowService/GetStatInfo"
-	FlowService_ListMirrorLogs_FullMethodName          = "/peerdb_route.FlowService/ListMirrorLogs"
-	FlowService_ListMirrors_FullMethodName             = "/peerdb_route.FlowService/ListMirrors"
-	FlowService_ListMirrorNames_FullMethodName         = "/peerdb_route.FlowService/ListMirrorNames"
-	FlowService_FlowStateChange_FullMethodName         = "/peerdb_route.FlowService/FlowStateChange"
-	FlowService_MirrorStatus_FullMethodName            = "/peerdb_route.FlowService/MirrorStatus"
-	FlowService_GetCDCBatches_FullMethodName           = "/peerdb_route.FlowService/GetCDCBatches"
-	FlowService_CDCBatches_FullMethodName              = "/peerdb_route.FlowService/CDCBatches"
-	FlowService_CDCGraph_FullMethodName                = "/peerdb_route.FlowService/CDCGraph"
-	FlowService_InitialLoadSummary_FullMethodName      = "/peerdb_route.FlowService/InitialLoadSummary"
-	FlowService_GetPeerInfo_FullMethodName             = "/peerdb_route.FlowService/GetPeerInfo"
-	FlowService_GetPeerType_FullMethodName             = "/peerdb_route.FlowService/GetPeerType"
-	FlowService_ListPeers_FullMethodName               = "/peerdb_route.FlowService/ListPeers"
-	FlowService_GetVersion_FullMethodName              = "/peerdb_route.FlowService/GetVersion"
-	FlowService_ResyncMirror_FullMethodName            = "/peerdb_route.FlowService/ResyncMirror"
-	FlowService_GetInstanceInfo_FullMethodName         = "/peerdb_route.FlowService/GetInstanceInfo"
-	FlowService_Maintenance_FullMethodName             = "/peerdb_route.FlowService/Maintenance"
-	FlowService_CreateOrReplaceFlowTags_FullMethodName = "/peerdb_route.FlowService/CreateOrReplaceFlowTags"
-	FlowService_GetFlowTags_FullMethodName             = "/peerdb_route.FlowService/GetFlowTags"
+	FlowService_ValidatePeer_FullMethodName             = "/peerdb_route.FlowService/ValidatePeer"
+	FlowService_ValidateCDCMirror_FullMethodName        = "/peerdb_route.FlowService/ValidateCDCMirror"
+	FlowService_CreatePeer_FullMethodName               = "/peerdb_route.FlowService/CreatePeer"
+	FlowService_DropPeer_FullMethodName                 = "/peerdb_route.FlowService/DropPeer"
+	FlowService_CreateCDCFlow_FullMethodName            = "/peerdb_route.FlowService/CreateCDCFlow"
+	FlowService_CreateQRepFlow_FullMethodName           = "/peerdb_route.FlowService/CreateQRepFlow"
+	FlowService_CustomSyncFlow_FullMethodName           = "/peerdb_route.FlowService/CustomSyncFlow"
+	FlowService_GetAlertConfigs_FullMethodName          = "/peerdb_route.FlowService/GetAlertConfigs"
+	FlowService_PostAlertConfig_FullMethodName          = "/peerdb_route.FlowService/PostAlertConfig"
+	FlowService_DeleteAlertConfig_FullMethodName        = "/peerdb_route.FlowService/DeleteAlertConfig"
+	FlowService_GetDynamicSettings_FullMethodName       = "/peerdb_route.FlowService/GetDynamicSettings"
+	FlowService_PostDynamicSetting_FullMethodName       = "/peerdb_route.FlowService/PostDynamicSetting"
+	FlowService_GetScripts_FullMethodName               = "/peerdb_route.FlowService/GetScripts"
+	FlowService_PostScript_FullMethodName               = "/peerdb_route.FlowService/PostScript"
+	FlowService_DeleteScript_FullMethodName             = "/peerdb_route.FlowService/DeleteScript"
+	FlowService_CDCTableTotalCounts_FullMethodName      = "/peerdb_route.FlowService/CDCTableTotalCounts"
+	FlowService_GetSchemas_FullMethodName               = "/peerdb_route.FlowService/GetSchemas"
+	FlowService_GetPublications_FullMethodName          = "/peerdb_route.FlowService/GetPublications"
+	FlowService_GetTablesInSchema_FullMethodName        = "/peerdb_route.FlowService/GetTablesInSchema"
+	FlowService_GetAllTables_FullMethodName             = "/peerdb_route.FlowService/GetAllTables"
+	FlowService_GetColumns_FullMethodName               = "/peerdb_route.FlowService/GetColumns"
+	FlowService_GetColumnsTypeConversion_FullMethodName = "/peerdb_route.FlowService/GetColumnsTypeConversion"
+	FlowService_GetSlotInfo_FullMethodName              = "/peerdb_route.FlowService/GetSlotInfo"
+	FlowService_GetSlotLagHistory_FullMethodName        = "/peerdb_route.FlowService/GetSlotLagHistory"
+	FlowService_GetStatInfo_FullMethodName              = "/peerdb_route.FlowService/GetStatInfo"
+	FlowService_ListMirrorLogs_FullMethodName           = "/peerdb_route.FlowService/ListMirrorLogs"
+	FlowService_ListMirrors_FullMethodName              = "/peerdb_route.FlowService/ListMirrors"
+	FlowService_ListMirrorNames_FullMethodName          = "/peerdb_route.FlowService/ListMirrorNames"
+	FlowService_FlowStateChange_FullMethodName          = "/peerdb_route.FlowService/FlowStateChange"
+	FlowService_MirrorStatus_FullMethodName             = "/peerdb_route.FlowService/MirrorStatus"
+	FlowService_GetCDCBatches_FullMethodName            = "/peerdb_route.FlowService/GetCDCBatches"
+	FlowService_CDCBatches_FullMethodName               = "/peerdb_route.FlowService/CDCBatches"
+	FlowService_CDCGraph_FullMethodName                 = "/peerdb_route.FlowService/CDCGraph"
+	FlowService_InitialLoadSummary_FullMethodName       = "/peerdb_route.FlowService/InitialLoadSummary"
+	FlowService_GetPeerInfo_FullMethodName              = "/peerdb_route.FlowService/GetPeerInfo"
+	FlowService_GetPeerType_FullMethodName              = "/peerdb_route.FlowService/GetPeerType"
+	FlowService_ListPeers_FullMethodName                = "/peerdb_route.FlowService/ListPeers"
+	FlowService_GetVersion_FullMethodName               = "/peerdb_route.FlowService/GetVersion"
+	FlowService_GetInstanceInfo_FullMethodName          = "/peerdb_route.FlowService/GetInstanceInfo"
+	FlowService_Maintenance_FullMethodName              = "/peerdb_route.FlowService/Maintenance"
+	FlowService_CreateOrReplaceFlowTags_FullMethodName  = "/peerdb_route.FlowService/CreateOrReplaceFlowTags"
+	FlowService_GetFlowTags_FullMethodName              = "/peerdb_route.FlowService/GetFlowTags"
 )
 
 // FlowServiceClient is the client API for FlowService service.
@@ -88,6 +88,7 @@ type FlowServiceClient interface {
 	GetTablesInSchema(ctx context.Context, in *SchemaTablesRequest, opts ...grpc.CallOption) (*SchemaTablesResponse, error)
 	GetAllTables(ctx context.Context, in *PostgresPeerActivityInfoRequest, opts ...grpc.CallOption) (*AllTablesResponse, error)
 	GetColumns(ctx context.Context, in *TableColumnsRequest, opts ...grpc.CallOption) (*TableColumnsResponse, error)
+	GetColumnsTypeConversion(ctx context.Context, in *ColumnsTypeConversionRequest, opts ...grpc.CallOption) (*ColumnsTypeConversionResponse, error)
 	GetSlotInfo(ctx context.Context, in *PostgresPeerActivityInfoRequest, opts ...grpc.CallOption) (*PeerSlotResponse, error)
 	GetSlotLagHistory(ctx context.Context, in *GetSlotLagHistoryRequest, opts ...grpc.CallOption) (*GetSlotLagHistoryResponse, error)
 	GetStatInfo(ctx context.Context, in *PostgresPeerActivityInfoRequest, opts ...grpc.CallOption) (*PeerStatResponse, error)
@@ -104,8 +105,6 @@ type FlowServiceClient interface {
 	GetPeerType(ctx context.Context, in *PeerInfoRequest, opts ...grpc.CallOption) (*PeerTypeResponse, error)
 	ListPeers(ctx context.Context, in *ListPeersRequest, opts ...grpc.CallOption) (*ListPeersResponse, error)
 	GetVersion(ctx context.Context, in *PeerDBVersionRequest, opts ...grpc.CallOption) (*PeerDBVersionResponse, error)
-	// Deprecated: Do not use.
-	ResyncMirror(ctx context.Context, in *ResyncMirrorRequest, opts ...grpc.CallOption) (*ResyncMirrorResponse, error)
 	GetInstanceInfo(ctx context.Context, in *InstanceInfoRequest, opts ...grpc.CallOption) (*InstanceInfoResponse, error)
 	Maintenance(ctx context.Context, in *MaintenanceRequest, opts ...grpc.CallOption) (*MaintenanceResponse, error)
 	CreateOrReplaceFlowTags(ctx context.Context, in *CreateOrReplaceFlowTagsRequest, opts ...grpc.CallOption) (*CreateOrReplaceFlowTagsResponse, error)
@@ -309,6 +308,15 @@ func (c *flowServiceClient) GetColumns(ctx context.Context, in *TableColumnsRequ
 	return out, nil
 }
 
+func (c *flowServiceClient) GetColumnsTypeConversion(ctx context.Context, in *ColumnsTypeConversionRequest, opts ...grpc.CallOption) (*ColumnsTypeConversionResponse, error) {
+	out := new(ColumnsTypeConversionResponse)
+	err := c.cc.Invoke(ctx, FlowService_GetColumnsTypeConversion_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *flowServiceClient) GetSlotInfo(ctx context.Context, in *PostgresPeerActivityInfoRequest, opts ...grpc.CallOption) (*PeerSlotResponse, error) {
 	out := new(PeerSlotResponse)
 	err := c.cc.Invoke(ctx, FlowService_GetSlotInfo_FullMethodName, in, out, opts...)
@@ -453,16 +461,6 @@ func (c *flowServiceClient) GetVersion(ctx context.Context, in *PeerDBVersionReq
 	return out, nil
 }
 
-// Deprecated: Do not use.
-func (c *flowServiceClient) ResyncMirror(ctx context.Context, in *ResyncMirrorRequest, opts ...grpc.CallOption) (*ResyncMirrorResponse, error) {
-	out := new(ResyncMirrorResponse)
-	err := c.cc.Invoke(ctx, FlowService_ResyncMirror_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *flowServiceClient) GetInstanceInfo(ctx context.Context, in *InstanceInfoRequest, opts ...grpc.CallOption) (*InstanceInfoResponse, error) {
 	out := new(InstanceInfoResponse)
 	err := c.cc.Invoke(ctx, FlowService_GetInstanceInfo_FullMethodName, in, out, opts...)
@@ -524,6 +522,7 @@ type FlowServiceServer interface {
 	GetTablesInSchema(context.Context, *SchemaTablesRequest) (*SchemaTablesResponse, error)
 	GetAllTables(context.Context, *PostgresPeerActivityInfoRequest) (*AllTablesResponse, error)
 	GetColumns(context.Context, *TableColumnsRequest) (*TableColumnsResponse, error)
+	GetColumnsTypeConversion(context.Context, *ColumnsTypeConversionRequest) (*ColumnsTypeConversionResponse, error)
 	GetSlotInfo(context.Context, *PostgresPeerActivityInfoRequest) (*PeerSlotResponse, error)
 	GetSlotLagHistory(context.Context, *GetSlotLagHistoryRequest) (*GetSlotLagHistoryResponse, error)
 	GetStatInfo(context.Context, *PostgresPeerActivityInfoRequest) (*PeerStatResponse, error)
@@ -540,8 +539,6 @@ type FlowServiceServer interface {
 	GetPeerType(context.Context, *PeerInfoRequest) (*PeerTypeResponse, error)
 	ListPeers(context.Context, *ListPeersRequest) (*ListPeersResponse, error)
 	GetVersion(context.Context, *PeerDBVersionRequest) (*PeerDBVersionResponse, error)
-	// Deprecated: Do not use.
-	ResyncMirror(context.Context, *ResyncMirrorRequest) (*ResyncMirrorResponse, error)
 	GetInstanceInfo(context.Context, *InstanceInfoRequest) (*InstanceInfoResponse, error)
 	Maintenance(context.Context, *MaintenanceRequest) (*MaintenanceResponse, error)
 	CreateOrReplaceFlowTags(context.Context, *CreateOrReplaceFlowTagsRequest) (*CreateOrReplaceFlowTagsResponse, error)
@@ -616,6 +613,9 @@ func (UnimplementedFlowServiceServer) GetAllTables(context.Context, *PostgresPee
 func (UnimplementedFlowServiceServer) GetColumns(context.Context, *TableColumnsRequest) (*TableColumnsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetColumns not implemented")
 }
+func (UnimplementedFlowServiceServer) GetColumnsTypeConversion(context.Context, *ColumnsTypeConversionRequest) (*ColumnsTypeConversionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetColumnsTypeConversion not implemented")
+}
 func (UnimplementedFlowServiceServer) GetSlotInfo(context.Context, *PostgresPeerActivityInfoRequest) (*PeerSlotResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSlotInfo not implemented")
 }
@@ -663,9 +663,6 @@ func (UnimplementedFlowServiceServer) ListPeers(context.Context, *ListPeersReque
 }
 func (UnimplementedFlowServiceServer) GetVersion(context.Context, *PeerDBVersionRequest) (*PeerDBVersionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetVersion not implemented")
-}
-func (UnimplementedFlowServiceServer) ResyncMirror(context.Context, *ResyncMirrorRequest) (*ResyncMirrorResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResyncMirror not implemented")
 }
 func (UnimplementedFlowServiceServer) GetInstanceInfo(context.Context, *InstanceInfoRequest) (*InstanceInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetInstanceInfo not implemented")
@@ -1070,6 +1067,24 @@ func _FlowService_GetColumns_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FlowService_GetColumnsTypeConversion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ColumnsTypeConversionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FlowServiceServer).GetColumnsTypeConversion(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FlowService_GetColumnsTypeConversion_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FlowServiceServer).GetColumnsTypeConversion(ctx, req.(*ColumnsTypeConversionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _FlowService_GetSlotInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PostgresPeerActivityInfoRequest)
 	if err := dec(in); err != nil {
@@ -1358,24 +1373,6 @@ func _FlowService_GetVersion_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _FlowService_ResyncMirror_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResyncMirrorRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(FlowServiceServer).ResyncMirror(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: FlowService_ResyncMirror_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FlowServiceServer).ResyncMirror(ctx, req.(*ResyncMirrorRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _FlowService_GetInstanceInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(InstanceInfoRequest)
 	if err := dec(in); err != nil {
@@ -1540,6 +1537,10 @@ var FlowService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _FlowService_GetColumns_Handler,
 		},
 		{
+			MethodName: "GetColumnsTypeConversion",
+			Handler:    _FlowService_GetColumnsTypeConversion_Handler,
+		},
+		{
 			MethodName: "GetSlotInfo",
 			Handler:    _FlowService_GetSlotInfo_Handler,
 		},
@@ -1602,10 +1603,6 @@ var FlowService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetVersion",
 			Handler:    _FlowService_GetVersion_Handler,
-		},
-		{
-			MethodName: "ResyncMirror",
-			Handler:    _FlowService_ResyncMirror_Handler,
 		},
 		{
 			MethodName: "GetInstanceInfo",
