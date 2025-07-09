@@ -1,8 +1,6 @@
 name: Update docker-compose.yaml tags
 
 on:
-  schedule:
-    - cron: '0 15 * * 1'
   workflow_dispatch:
     inputs: {}
   push:
