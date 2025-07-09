@@ -5,8 +5,8 @@ on:
     branches: [ "main", "customer-*", "stable" ]
   pull_request:
     branches: [ "main", "customer-*", "stable" ]
-  schedule:
-    - cron: '15 17 * * 2'
+  workflow_dispatch:
+
 
 jobs:
   analyze:
